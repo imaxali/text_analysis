@@ -3,27 +3,21 @@ import abc
 import math
 from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
-import gensim
 
-import re
 from re_tokenize import single_words
-
-
-str1 = 'Lorem ipsum dolor cit amet.'
-str2 = 'Loram ipsUm dolor cit aet'
 
 
 class IStrComparison(metaclass=abc.ABCMeta):
     @classmethod
     def __subclasshook__(cls, subcls):
         return (
-            hasattr(subcls, 'perform_comparison') and
-            callable(subcls.perform_comparison)
+            hasattr(subcls, 'comparing') and
+            callable(subcls.comparing)
         )
 
 
 class LevenshteinDistanceRatio:
-    def perform_comparison(self, a: str, b: str) -> float:
+    def comparing(self, a, b=None) -> float:
         rows = len(a) + 1
         cols = len(b) + 1
         distance = np.zeros((rows, cols), dtype=int)
@@ -42,26 +36,29 @@ class LevenshteinDistanceRatio:
                                          distance[row][col - 1] + 1,
                                          distance[row - 1][col - 1] + cost)
 
-        ratio = (len(str1) + len(str2) - distance[row][col]) / (len(str1)+len(str2))
+        ratio = (len(a) + len(b) - distance[row][col]) / (len(a)+len(b))
         return float('%.3f' % ratio)
 
 
 class JaroWinklerSimilarity:
-    def perform_comparison(self, a: str, b: str, p: float = 0.1, max_l=None) -> float:
-            jaro_sim = self.jaro_similarity(a, b)
+    def comparing(self, a: str, b: str, p: float = 0.1, max_l=None) -> float:
+            sim = self.jaro_similarity(a, b)
             max_l = max_l if max_l else len(a)
 
             prefix_ln = 0
             for i in range(len(a)):
-                if a[i] == b[i]:
-                    prefix_ln += 1
-                else:
+                try:
+                    if a[i] == b[i]:
+                        prefix_ln += 1
+                    else:
+                        break
+                except IndexError:
                     break
                 if prefix_ln == max_l:
                     break
 
-            similarity = jaro_sim + (prefix_ln * p * (1 - jaro_sim))
-            return float('%.3f' % similarity)
+            res = sim + (prefix_ln * p * (1 - sim))
+            return float('%.3f' % res)
 
     @staticmethod
     def jaro_similarity(a: str, b: str) -> float:
@@ -87,11 +84,11 @@ class JaroWinklerSimilarity:
                         matches / a_ln +
                         matches / b_ln +
                         (matches - transpositions // 2) / matches
-                )
+                    )
 
 
 class HammingDistanceCoef:
-    def perform_comparison(self, a: str, b: str) -> float:
+    def comparing(self, a: str, b: str) -> float:
         max_ln = max(len(a), len(b))
         return float(
             '%.3f' % (
@@ -104,27 +101,51 @@ class HammingDistanceCoef:
         )
 
 
-def build_hierarchy():
-    model = gensim.models.Word2Vec([single_words], min_count=1)
+class HierarchicalClustering:
+    def distribution(self, a, b=None, alg=1):
+        if b is None:
+            p1, p2 = a
+        if alg == 1:
+            if b is None:
+                return LevenshteinDistanceRatio().comparing(single_words[p1], single_words[p2])
+            return LevenshteinDistanceRatio().comparing(a, b)
+        elif alg == 2:
+            if b is None:
+                return JaroWinklerSimilarity().comparing(single_words[p1], single_words[p2])
+            return JaroWinklerSimilarity().comparing(a, b)
+        elif alg == 3:
+            if b is None:
+                return HammingDistanceCoef().comparing(single_words[p1], single_words[p2])
+            return HammingDistanceCoef().comparing(a, b)
+        else:
+            return 'No algorithm by this num'
 
-    link_model = linkage(model.wv.syn0, method='complete')
+    def build(self):
+        upper_triangle = np.triu_indices(len(single_words), 1)
+        w_dist = np.apply_along_axis(self.distribution, 0, upper_triangle, None, 1)
 
-    plt.figure(figsize=(12, 12))
-    plt.title('Дендрограмма иерархической кластеризации')
-    plt.ylabel('Расстояние')
-    plt.xlabel('Слова')
+        link_model = linkage(w_dist, method='average')
+        plt.figure(figsize=(12, 12))
+        plt.title('Дендрограмма иерархической кластеризации')
+        plt.ylabel('Расстояние')
+        plt.xlabel('Слова')
 
-    dendrogram(
-        link_model,
-        leaf_font_size=6,
-        orientation='top',
-        leaf_label_func=lambda v: str(model.wv.index2word[v])
-    )
+        dendrogram(
+            link_model,
+            leaf_font_size=6,
+            orientation='top',
+            leaf_label_func=lambda v: single_words[v]
+        )
 
-    plt.show()
+        plt.show()
 
 
-print(LevenshteinDistanceRatio().perform_comparison(str1, str2))
-print(JaroWinklerSimilarity().perform_comparison(str1, str2))
-print(HammingDistanceCoef().perform_comparison(str1, str2))
-print(build_hierarchy())
+print(HierarchicalClustering().build())
+
+# For execution without building hierarchical clustering
+# s1 = 'CHEESE CHORES GESE GLOVES'
+# s2 = 'CHESE CORES GEESE GLOVE'
+#
+# print('Levenstein:', HierarchicalClustering().distribution(1, s1, s2))
+# print('JaroWinkler:', HierarchicalClustering().distribution(2, s1, s2))
+# print('HammingDistance:', HierarchicalClustering().distribution(3, s1, s2))
