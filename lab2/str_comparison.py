@@ -4,7 +4,7 @@ import math
 from scipy.cluster.hierarchy import linkage, dendrogram
 import matplotlib.pyplot as plt
 
-from re_tokenize import single_words
+from lab2.re_tokenize import single_words
 
 
 class IStrComparison(metaclass=abc.ABCMeta):
