@@ -12,7 +12,7 @@ from re_tokenize import Tokenization
 from converting_to_xml import XMLConverter as converter
 
 
-def create_dict():
+def create_dicts():
     print('Type in sample thematics:')
     sample_name = input().lower()
 
@@ -78,4 +78,32 @@ def create_dict():
         csv_main.writerow([k, common_voc[k]])
 
 
-print(create_dict())
+def contrast_selection(samples):
+    dicts = []
+    for sample in samples:
+        with open('lab3/dicts/%s/words_weights.csv' % sample, encoding='utf8') as csvf:
+            csvr = csv.DictReader(csvf)
+            dicts.append({})
+            for row in csvr:
+                if float(row['tf/idf']) >= 1.382:
+                    dicts[len(dicts) - 1][row['word']] = row['tf/idf']
+                else:
+                    break
+    for i in range(len(dicts) - 1):
+        for k in list(dicts[i]):
+            for j in range(i + 1, len(dicts)):
+                if k in dicts[j]:
+                    dicts[i].pop(k)
+                    dicts[j].pop(k)
+                    print(k)
+    for i in range(len(samples)):
+        with open('lab3/dicts/%s/key_words.csv' % samples[i], 'w+', encoding='utf8', newline='') as f:
+            csvw = csv.writer(f)
+            csvw.writerow(['keyword'])
+            for k in dicts[i]:
+                csvw.writerow([k])
+
+
+if __name__ == '__main__':
+    #print(create_dicts())
+    print(contrast_selection(['vk', 'telegram']))
