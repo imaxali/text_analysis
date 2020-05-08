@@ -1,0 +1,22 @@
+Wing types
+Aircraft can also be categorized by their configurations. One measure is the number of wings, and the styles include monoplanes, with a single wing (that is, on either side of the fuselage); biplanes, with two wings, one atop the other; and even, though rarely, triplanes and quadplanes. A tandem-wing craft has two wings, one placed forward of the other.
+
+The wing planform is the shape it forms when seen from above. Delta wings are formed in the shape of the Greek letter delta (Δ); they are triangular wings lying at roughly a right angle to the fuselage. The supersonic Concorde featured delta wings.
+
+Swept wings are angled, usually to the rear and often at an angle of about 35°. Forward swept wings also are used on some research craft.
+
+Some aircraft have wings that may be adjusted in flight to attach at various angles to the fuselage; these are called variable incidence wings. Variable geometry (swing) wings can vary the sweep (i.e., the angle of a wing with respect to the plane perpendicular to the longitudinal axis of the craft) of their wings in flight. These two types have primarily military applications, as does the oblique wing, in which the wing is attached at an angle of about 60° as an alternative to the standard symmetrical wing sweep.
+
+Another configuration limited to military craft is the so-called flying wing, a tailless craft having all its elements encompassed within the wing structure (as in the Northrop B-2 bomber). Unlike the flying wing, the lifting-body aircraft (such as the U.S. space shuttle) generates lift in part or totally by the shape of the fuselage rather than the wing, which is severely reduced in size or altogether absent.
+
+
+Takeoff and landing gear
+Another means of categorizing aircraft is by the type of gear used for takeoff and landing. In a conventional aircraft the gear consists of two primary wheels under the forward part of the fuselage and a tailwheel. The opposite configuration is called a tricycle gear, with a single nose wheel and two main wheels farther back. An aircraft with two main undercarriage assemblies in the fuselage and wing tip protector wheels is said to have bicycle gear.
+
+Large aircraft, such as the Boeing 747, incorporate multiple bogies (several wheels arranged in a variety of configurations) in their landing gear to spread out the weight of the aircraft and to facilitate stowage after retraction in flight.
+
+A few aircraft use skis or other structures to allow takeoff from or landing in water. These include floatplanes, which are fitted with pontoons for operation on water; flying boats, in which the fuselage also serves as a hull for water travel; and amphibians, which are equipped to land on and take off from both land and water.
+
+The demands placed on naval planes used on aircraft carriers require a heavier structure to withstand the stresses of catapult launches and landings abruptly terminated by arresting gear. Landing-gear mechanisms are also reinforced, and a tail hook is installed to engage the arresting gear, a system that is also used for land-based heavy military aircraft.
+
+The mode of takeoff and landing also differs among aircraft. Conventional craft gather speed (to provide lift) on an airfield prior to liftoff and land on a similar flat surface. A variety of means have been used in the design of aircraft intended to accomplish short takeoffs and landings (STOL vehicles). These range from optimized design of the wing, fuselage, and landing gear as in the World War II Fieseler Storch (which featured Handley Page automatic slots, extendable flaps, and a long-stroke undercarriage) to the combination of generous wing area, large flap area, and the use of large propellers to direct airflow over the wing as in the prewar Crouch-Bolas, or even such specialized innovations as large U-shaped channels in the wings as with the Custer Channel Wing aircraft. Vertical-takeoff-and-landing (VTOL) vehicles include the helicopter, tilt rotors, and “jump jets,” which lift off from the ground in a vertical motion. Single-stage-to-orbit (SSTO) aircraft can take off and land on conventional runways but can also be flown into an orbital flight path.

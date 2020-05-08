@@ -5,6 +5,7 @@ import pymorphy2
 import csv
 from functools import reduce
 import math
+from scipy import sparse
 
 sys.path.append('lab1')
 sys.path.append('lab2')
@@ -12,98 +13,140 @@ from re_tokenize import Tokenization
 from converting_to_xml import XMLConverter as converter
 
 
-def create_dicts():
-    print('Type in sample thematics:')
-    sample_name = input().lower()
+class TfidfDicts:
+    sample_name = None
+    common_voc = {}
+    df = {}
+    files = []
+    doc_term_matrix = []
+    tf_idf_matrix = []
 
-    global tokens, stems, frq
-    frq = 1
-    files = os.listdir('lab3/samples/%s' % sample_name)
-    common_voc = dict()
+    def filter_stops(self):
+        csv_main = csv.writer(
+            open(
+                'lab3/dicts/%s/words_weights.csv' % self.sample_name,
+                'w+',
+                encoding='utf8',
+                newline=''
+            )
+        )
+        csv_main.writerow(['word', 'tf/idf'])
 
-    lemmatizer = pymorphy2.MorphAnalyzer()
-    stemmer = nltk.stem.SnowballStemmer('russian')
+        csv_stops = csv.writer(
+            open(
+                'lab3/dicts/%s/stop_words.csv' % self.sample_name,
+                'w+',
+                encoding='utf8',
+                newline=''
+            )
+        )
+        csv_stops.writerow(['stop-word'])
 
-    csv_main = csv.writer(open('lab3/dicts/%s/words_weights.csv' % sample_name, 'w+', encoding='utf8', newline=''))
-    csv_main.writerow(['word', 'tf/idf'])
+        for k in list(self.common_voc):
+            if self.common_voc[k] < 0.25:
+                csv_stops.writerow([k])
+                self.common_voc.pop(k)
 
-    csv_stops = csv.writer(open('lab3/dicts/%s/stop_words.csv' % sample_name, 'w+', encoding='utf8', newline=''))
-    csv_stops.writerow(['stop-word'])
+        sorted_voc = {k: v for k, v in sorted(self.common_voc.items(), key=lambda el: el[1], reverse=True)}
 
-    doc_num_have_word = dict()
+        for k in sorted_voc:
+            csv_main.writerow([k, sorted_voc[k]])
 
-    for fl in files:
-        markup = converter().convert('lab3/samples/%s/' % sample_name, fl)
+    def tf_idf_counter(self):
+        for w in self.doc_term_matrix.toarray():
+            self.tf_idf_matrix.append([0]*(len(w)))
+        for idx in range(len(self.files)):
+            max_frq = reduce(lambda p, c: max(p, c), [w[idx] for w in self.doc_term_matrix.toarray()])
+            for i, w, k in zip(range(len(self.doc_term_matrix.data)), self.doc_term_matrix.toarray(), self.common_voc):
+                if w[idx] != 0:
+                    tf = 0.5 + 0.5 * w[idx] / max_frq
+                    idf = math.log(len(self.files) / (self.df.get(k) if self.df.get(k) else 1))
+                    self.tf_idf_matrix[i][idx] = float('%.3f' % (tf * idf))
+        self.tf_idf_matrix = sparse.lil_matrix(self.tf_idf_matrix)
 
-        tokens = Tokenization().tokenize(markup)
-        lemmas = [lemmatizer.parse(tk)[0].normal_form for tk in tokens]
-        stems = [stemmer.stem(l) for l in lemmas]
-
-        voc = dict()
-
-        for idx, stem in enumerate(stems):
-            if stem not in voc:
-                frq = stems.count(stem)
-                voc[stem] = frq
-
-        if not bool(common_voc):
-            common_voc = {**voc}
+    def df_counter(self, sample=None):
+        if sample is None:
+            print('Type in sample thematics:')
+            self.sample_name = 'lab3/samples/' + input().lower()
         else:
-            for k1 in voc:
-                for i, k2 in enumerate(list(common_voc)):
-                    if k1 == k2:
-                        common_voc[k2] += voc[k2]
-                        if doc_num_have_word.get(k2):
-                            doc_num_have_word[k2] += 1
-                        else:
-                            doc_num_have_word[k2] = 2
+            self.sample_name = sample
+
+        self.files = os.listdir(self.sample_name)
+
+        lemmatizer = pymorphy2.MorphAnalyzer()
+        stemmer = nltk.stem.SnowballStemmer('russian') if __name__ == 'main' else nltk.stem.porter.PorterStemmer()
+
+        doc_term_frq = []
+
+        for fl in self.files:
+            markup = converter().convert(fl, self.sample_name)
+
+            tokens = Tokenization().tokenize(markup)
+            lemmas = [lemmatizer.parse(tk)[0].normal_form for tk in tokens]
+            stems = [stemmer.stem(l) for l in lemmas]
+
+            voc = dict()
+
+            for idx, stem in enumerate(stems):
+                if stem not in voc:
+                    frq = stems.count(stem)
+                    voc[stem] = frq
+
+            doc_term_frq.append(voc)
+
+            if not bool(self.common_voc):
+                self.common_voc = {**voc}
+            else:
+                for k1 in voc:
+                    for i, k2 in enumerate(list(self.common_voc)):
+                        if k1 == k2:
+                            self.common_voc[k2] += voc[k2]
+                            if self.df.get(k2):
+                                self.df[k2] += 1
+                            else:
+                                self.df[k2] = 2
+                            break
+                        elif i == len(self.common_voc) - 1:
+                            self.common_voc[k1] = voc[k1]
+
+        self.doc_term_matrix = []
+        for k in self.common_voc:
+            self.doc_term_matrix.append([0] * len(self.files))
+            for i, v in zip(range(len(doc_term_frq)), doc_term_frq):
+                if v.get(k):
+                    self.doc_term_matrix[len(self.doc_term_matrix) - 1][i] = v[k]
+        self.doc_term_matrix = sparse.lil_matrix(self.doc_term_matrix)
+
+        return self.doc_term_matrix
+
+    def contrast_selection(self, samples):
+        dicts = []
+        for sample in samples:
+            with open('lab3/dicts/%s/words_weights.csv' % sample, encoding='utf8') as csvf:
+                csvr = csv.DictReader(csvf)
+                dicts.append({})
+                for row in csvr:
+                    if float(row['tf/idf']) >= 1.382:
+                        dicts[len(dicts) - 1][row['word']] = row['tf/idf']
+                    else:
                         break
-                    elif i == len(common_voc) - 1:
-                        common_voc[k1] = voc[k1]
-
-    for k in list(common_voc):
-        max_frq = reduce(lambda p, c: max(p, c), [v for k, v in common_voc.items()])
-        tf = 0.5 + 0.5 * common_voc[k] / max_frq
-        common_voc[k] = tf
-
-        idf = math.log(len(files) / (doc_num_have_word.get(k) if doc_num_have_word.get(k) else 1))
-        common_voc[k] = float('%.3f' % (common_voc[k] * idf))
-        if common_voc[k] < 0.25:
-            csv_stops.writerow([k])
-            common_voc.pop(k)
-
-    common_voc = {k: v for k, v in sorted(common_voc.items(), key=lambda el: el[1], reverse=True)}
-
-    for k in common_voc:
-        csv_main.writerow([k, common_voc[k]])
-
-
-def contrast_selection(samples):
-    dicts = []
-    for sample in samples:
-        with open('lab3/dicts/%s/words_weights.csv' % sample, encoding='utf8') as csvf:
-            csvr = csv.DictReader(csvf)
-            dicts.append({})
-            for row in csvr:
-                if float(row['tf/idf']) >= 1.382:
-                    dicts[len(dicts) - 1][row['word']] = row['tf/idf']
-                else:
-                    break
-    for i in range(len(dicts) - 1):
-        for k in list(dicts[i]):
-            for j in range(i + 1, len(dicts)):
-                if k in dicts[j]:
-                    dicts[i].pop(k)
-                    dicts[j].pop(k)
-                    print(k)
-    for i in range(len(samples)):
-        with open('lab3/dicts/%s/key_words.csv' % samples[i], 'w+', encoding='utf8', newline='') as f:
-            csvw = csv.writer(f)
-            csvw.writerow(['keyword'])
-            for k in dicts[i]:
-                csvw.writerow([k])
+        for i in range(len(dicts) - 1):
+            for k in list(dicts[i]):
+                for j in range(i + 1, len(dicts)):
+                    if k in dicts[j]:
+                        dicts[i].pop(k)
+                        dicts[j].pop(k)
+                        print(k)
+        for i in range(len(samples)):
+            with open('lab3/dicts/%s/key_words.csv' % samples[i], 'w+', encoding='utf8', newline='') as f:
+                csvw = csv.writer(f)
+                csvw.writerow(['keyword'])
+                for k in dicts[i]:
+                    csvw.writerow([k])
 
 
 if __name__ == '__main__':
-    #print(create_dicts())
-    print(contrast_selection(['vk', 'telegram']))
+    dicts = TfidfDicts()
+    print(dicts.df_counter())
+    print(dicts.tf_idf_counter())
+    print(dicts.tf_idf_matrix)
