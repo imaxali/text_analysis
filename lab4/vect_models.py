@@ -4,10 +4,10 @@ import numpy as np
 import math
 
 sys.path.append('lab3')
-from voc_compose import TfidfDicts
+from voc_compose import Vectorisation
 
 
-class Vectorisation:
+class Estimation:
     tf_idf = []
     doc_term = []
     words = {}
@@ -95,7 +95,7 @@ class Vectorisation:
         #  [-0.09278419  0.00856524 - 0.03448276 ...  1.     1.  1.]]
 
     def get_matrices(self):
-        dicts = TfidfDicts()
+        dicts = Vectorisation()
         dicts.df_counter('lab4/wordsim_sample/')
         dicts.tf_idf_counter()
         self.doc_term = dicts.doc_term_matrix
@@ -104,7 +104,7 @@ class Vectorisation:
 
 
 if __name__ == '__main__':
-    vect_model = Vectorisation()
+    vect_model = Estimation()
     print(vect_model.get_matrices())
     #print(vect_model.pearson_corrcoef())
     print(vect_model.cosine_sim(vect_model.tf_idf, 'doctor', 'nurse'))
@@ -113,8 +113,8 @@ if __name__ == '__main__':
 #   Comparing coeffs similarity metrics of doc-term models with wordsim353
 #                       Wordsim353  Cosine Sim  Jaccard Sim
 #   tiger,tiger         10          10          10
-#   tiger,cat           7.35        5.56        0.7
-#   plane,car           5.77        3.46        0.39
+#   tiger,cat           7.35        lab5.56        0.7
+#   plane,car           lab5.77        3.46        0.39
 #   car,jaguar          7.27        3.46        0.39
 #   tiger,jaguar        8           4.12        0.39
 #   cat,jaguar          7.42        4.12        0.39

@@ -8,15 +8,10 @@ class Tokenization:
         global text_content
 
         def is_numeric(s):
-            if s.isnumeric() is True:
-                try:
-                    s = num2words(s, lang='en')
-                except:
-                    pass
-            return s
+            return s if s.isnumeric() is False else num2words(s, lang='en')
 
         def is_single(c):
-            return '' if len(c) == 1 else c
+            return '' if c is None or len(c) == 1 else c
 
         if fn is not True:
             text_content = txt
