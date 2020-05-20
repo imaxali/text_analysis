@@ -59,14 +59,15 @@ if __name__ == '__main__':
         get_predicts = BayesClassifier().classify(classifier, test_set)
         estimation = confusion_matrix([sms[0] for sms in test_set], get_predicts)
 
-        precision = estimation[0][0] / (estimation[0][0] + estimation[1][1])
-        recall = estimation[0][0] / (estimation[0][0] + estimation[1][0])
+        precision = estimation[1][1] / (estimation[1][1] + estimation[1][0])
+        recall = estimation[1][1] / (estimation[1][1] + estimation[0][1])
         avg_precision += (recall - prev_recall) * precision
+        prev_recall = recall
         threshold = float('%.2f' % threshold) - 0.1
 
-    avg_precision = float('%.2f' % (avg_precision / 5))
+    avg_precision = float('%.2f' % avg_precision)
     print(avg_precision)
-    # 0.87
+    # 0.8 - spam as positive & 0.97 - ham as positive
 
     lab3 = Vectorisation()
     lab3.df_counter()
