@@ -21,10 +21,10 @@ class BayesClassifier:
             for feat in feats:
                 frq[lbl, feat] += 1
 
-        for lbl, feat in frq:
-            frq[lbl, feat] /= classes[lbl]
-        for c in classes:
-            classes[c] /= len(samples)
+        # for lbl, feat in frq:
+        #     frq[lbl, feat] /= classes[lbl]
+        # for c in classes:
+        #     classes[c] /= len(samples)
 
         return classes, frq
 
@@ -52,8 +52,7 @@ if __name__ == '__main__':
     prev_recall = 0
     avg_precision = 0
     while threshold > 0:
-        train_set, test_set = train_test_split(dataset, test_size=threshold, random_state=1)
-
+        train_set, test_set = train_test_split(dataset, test_size=threshold)
         classifier = BayesClassifier().train(train_set)
 
         get_predicts = BayesClassifier().classify(classifier, test_set)
@@ -61,13 +60,14 @@ if __name__ == '__main__':
 
         precision = estimation[1][1] / (estimation[1][1] + estimation[1][0])
         recall = estimation[1][1] / (estimation[1][1] + estimation[0][1])
+        print(estimation)
+        print(precision, recall)
         avg_precision += (recall - prev_recall) * precision
         prev_recall = recall
         threshold = float('%.2f' % threshold) - 0.1
 
     avg_precision = float('%.2f' % avg_precision)
     print(avg_precision)
-    # 0.8 - spam as positive & 0.97 - ham as positive
 
     lab3 = Vectorisation()
     lab3.df_counter()
