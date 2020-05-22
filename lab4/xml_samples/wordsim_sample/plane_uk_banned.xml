@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<doc name="plane_uk_banned.xml">
+  <block>
+    <block>UK and other EU countries ban Boeing 737 Max after Ethiopia crash</block>
+    <block>Aircraft safety is in the spotlight after an Ethiopian Airlines flight crashed earlier this week, killing more than 150 people. The UK Civil Aviation Authority (CAA) has subsequently banned the aircraft type from operating in the UK, following similar action in other countries around the world. Flying is still very safe overall, but questions remain about this particular Boeing 737 Max models and the causes of the recent crash.</block>
+  </block>
+  <block>
+    <block>What has happened?</block>
+    <block>A Boeing 737 Max 8, operated by Ethiopian Airlines, crashed on Sunday 10 March shortly after take-off from Addis Ababa, killing all 157 people on board. Details are still scarce and an investigation will take place in the coming days and weeks. The plane’s black box was recovered on 11 March. An Ethiopian Airlines spokesperson said the company has decided to ground its fleet of Boeing 737 Max 8 aircraft “as an extra safety precaution”.</block>
+    <block>Is this the first time the Boeing 737 Max 8 has been involved in a crash?</block>
+    <block>It isn’t. Lion Air flight 610 used the same type of plane and crashed 12 minutes after take-off from Jakarta in October 2018, killing 189 people on board.</block>
+    <block>The 737 Max 8 involved in Sunday’s crash was only registered in November, and is one of 350 such planes currently in operation. The order book for the plane – the latest version of Boeing’s classic 737 – is long, with more than 5000 ordered since 2017.</block>
+    <block>Is the 737 Max 8 dangerous?</block>
+    <block>In November, following the Lion Air crash, Boeing issued a warning to airlines that the Max 8 flight monitoring system can throw up incorrect readings that cause the autopilot to dive rapidly, thinking that the plane is in a mid-air stall. That Boeing alert, and a subsequent one by the US Federal Aviation Administration (FAA) indicated that they believed the crash could have been caused by a faulty angle-of-attack sensor, which measures how air flows over the wings.</block>
+    <block>The angle-of-attack sensor was replaced on Lion Air flight 610 the day before the accident because it had failed. “It was certified as safe by the appropriate regulatory authorities,” says Graham Braithwaite at Cranfield University, UK. “The investigators will need to ensure nothing was missed in that process.”</block>
+    <block>Boeing 737-600s have an accident rate of fewer than one in every 5 million departures. Back-of-the-envelope analysis by David Gleave at Loughborough University, UK, shows the accident rate of a 737 Max, which has a more efficient engine and wing design than its predecessors, is now six or seven times that – although it is still extremely low.</block>
+  </block>
+  <block>
+    <block>Do we know what went wrong?</block>
+    <block>No. While people are pointing to the similar circumstances around the Ethiopian and Lion Air crashes – both happened shortly after take-off, with both planes seemingly unable to ascend properly – it is still too early to tell. “There could be a correlation but no common causation,” says Gleave.</block>
+    <block>Are there more plane crashes now or are we just noticing them more?</block>
+    <block>Accident rates are still very low in commercial aviation and the number of aircraft in the air is increasing. A 2013 study by researchers at Northwestern University in Illinois found that 0.07 people die for every billion miles travelled on planes, compared with 7.3 people on cars, and 0.43 people on trains. Recent plane accidents will hardly dent these statistics. “The 737 Max accidents are high profile partly because it’s a new version and partly because both were total losses,” says Braithwaite.</block>
+    <block>Where is the Boeing 737 Max allowed to operate?</block>
+    <block>Ethiopian Airlines has grounded its fleet of 737 Max 8s, and regulators in China, the UK, Germany, France, Australia, Malaysia and Singapore have banned Boeing 737 Max aircraft from flying in their airspace. Airlines in Oman, Norway and South Korean have also decided to stop flying the model temporarily.</block>
+    <block>The US Federal Aviation Authority (FAA) says that the Boeing 737 Max 8 is airworthy and will not ground the model. US transportation secretary Elaine Chao said the US government would “take immediate and appropriate action” if any defects are found.</block>
+    <block>What happens next?</block>
+    <block>Boeing and technical teams from Israel, the United Arab Emirates, and Kenya have joined up with aviation experts and the Ethiopian authorities to investigate the cause of the Ethiopian Airlines crash. Boeing is also expected to reveal improvements to the faulty angle-of-attack sensor, and release new training requirements and flight crew materials, all of which might have contributed to the Lion Air crash in October.</block>
+  </block>
+</doc>

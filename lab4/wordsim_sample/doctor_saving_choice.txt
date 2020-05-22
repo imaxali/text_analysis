@@ -1,0 +1,50 @@
+You Can Save One Person or Five. But Not All Six.
+Hospitals are having to ration essential care. Can they do it fairly?
+
+Recent reports make clear that American hospitals have already had to ration lifesaving treatment for Covid-19 patients. Initially, the fear was that ventilators would be in short supply. For now, there seems to be enough. But some hospitals are short on dialysis machines as well as the staff members and supplies to run them. It’s excruciating to think of doctors being forced to decide which patients get care and which don’t.
+
+I teach moral philosophy, and as I read those reports, I couldn’t stop thinking about the philosopher John Taurek’s 1977 paper “Should the Numbers Count?” It speaks to the dreadful decisions that doctors may be facing, and it makes a surprising suggestion about what counts as equal treatment in an emergency.
+
+Imagine, Professor Taurek said, that you have a limited supply of a lifesaving drug. Six people will die if they do not get it. But one person’s situation is more dire: To survive, he needs your entire supply. The other five each need just one-fifth of it. So you can save one or five. But you can’t save all six.
+
+Most people would save five, reasoning that saving more people is better than saving fewer.
+
+Swap the drug for a dialysis machine, and this situation is similar to those starting to play out in hospitals today. Imagine that you work in an intensive-care unit that has just one dialysis machine left. Two patients desperately need it. One is, on the whole, healthier; the other has complications. The healthier patient, you suspect, will recover more quickly, occupying the machine for just a few days. The less healthy patient might need its support for weeks.
+
+Many people would give the machine to the healthier patient, reasoning that it would become available for other patients more quickly. That way, you might save several patients in the time it would take to save the less healthy one.
+
+But that’s not what Professor Taurek would do. He argued that the numbers don’t matter — that we shouldn’t seek to save more people. He said he’d flip a coin to decide whether to divide the drug among the five or give it to the one who needs it all. Presumably, he’d flip coins for dialysis machines too.
+
+Why? Professor Taurek observed that the stakes are the same for all six people: Each will die without the needed dose. If we direct the drug to the patient who needs the entire supply, it’s true that more people will die — five instead of one. But no one dies five times; each person dies just once. That means that none of the five could say to the one, “I would suffer more than you without the drug.”
+
+It’s tempting to say that the five, considered as a group, would suffer more. But Professor Taurek didn’t think we could sum their suffering that way.
+
+Here’s why. Suppose, he said, that you will have a mild headache unless I agree to suffer a severe migraine. It would be absurd for you to ask that I endure severe pain so that you can avoid just a bit. Now imagine that a second person comes along, and that person could also avoid a mild headache if I agreed to the migraine. And then a third, and a fourth and on and on.
+
+At some point, you might be tempted to say that the suffering associated with all the mild headaches, considered as a group, outweighs the suffering associated with my severe migraine. But no one endures the sum of all those mild headaches. Each experiences just her own mild headache. And Professor Taurek thought it would be outrageous for anyone in the group to ask me to suffer severely so as to save that person some modest pain.
+
+For the same reason, Professor Taurek thought that the five people who would split the drug had similarly weak arguments. Each could ask the person who needs the whole supply to give it up for the benefit of all the others. But none of them could say that she needed it more.
+
+Wouldn’t they suffer more as a group? No, Professor Taurek said. The group doesn’t suffer. Just the individuals.
+
+Since the stakes are the same for everyone involved, Professor Taurek thought all six deserved an equal shot at survival. This is why he said he would flip a coin. If it comes up heads, we save the person who needs the entire supply. If it comes up tails, we save the other five. Everyone has a 50-50 shot at survival.
+
+Many found Professor Taurek’s argument maddening. I think the most compelling response came from the philosopher Derek Parfit. He argued that we can, indeed, sum suffering across groups. But he also urged a different interpretation of equality. He said that equality demands that we give equal consideration to each person’s life, rather than equalize their chances at survival. We should save the larger number, he said, because each person counts for the same, so more people “count for more.”
+
+Who has the better take on equality? Professor Taurek, who wants equal chances? Or Professor Parfit, who wants to count each person equally?
+
+I’m not sure. And it gets more complicated, because there are further ways to think about equality. The conditions that make Covid-19 more deadly, for example, are not distributed evenly among all social groups. In particular, they are concentrated among poor and minority communities. And that’s not an accident. It’s the result of decades of deliberate policy choices about, among other things, whom we insure and where we pollute.
+
+With that in mind, we could tweak Professor Taurek’s example. Suppose that the person who needs the full supply requires it because we have, for many years, treated her worse than the other five. Counting the number of lives we could save now, she might say, doesn’t give her equal weight in our moral calculus, since we’ve all along counted her for less than the others. To make up for what we’ve done, perhaps we owe her an equal shot? Or perhaps we owe her the drug outright?
+
+Here we have another take on equality: Advantage the disadvantaged, so as to even the score.
+
+I find that appealing. But I don’t think we should ask doctors to remedy past discrimination. They can’t do it, except haphazardly. And it’s not their job. A doctor ought to consider a patient’s present medical needs and nothing else: not her sex, not her race, not her long-term disabilities, not whether her mother loves her, not any fact about her, save as relevant to her medical condition.
+
+Doctors must treat the sick. It’s the rest of us who are responsible for fixing the social problems the pandemic has starkly illustrated.
+
+But what should doctors do when their patients’ needs conflict — when, for example, there are more patients than dialysis machines? Follow Professor Taurek and flip a coin? Or seek to save the greatest number?
+
+Both strike me as ways of treating people equally. And because they do, I would choose less death. But I understand why those who are disadvantaged, or simply sicker, seek different sorts of equality. And I don’t know that they are wrong to demand them. There are many attractive forms of equality, and the sad truth is that they are, in our present circumstances, incompatible.
+
+Like so much else these days, morality feels a bit muddled.

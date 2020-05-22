@@ -9,7 +9,10 @@ class Tokenization:
 
         def is_numeric(s):
             if s.isnumeric() is True:
-                s = num2words(s, lang='ru')
+                try:
+                    s = num2words(s, lang='en')
+                except:
+                    pass
             return s
 
         def is_single(c):

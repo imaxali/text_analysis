@@ -11,13 +11,8 @@ from pathlib import Path
 
 
 class XMLConverter:
-    def convert(self, dirn=None, fn=None):
-        global sample_name
-        if dirn is None:
-            fl = fn
-        else:
-            fl = Path(dirn) / fn
-            sample_name = ''.join(filter(bool, re.split(r'/|\w(?!\w*/$)', dirn)))
+    def convert(self, fn=None, dirn=None):
+        global sample_name, lab, fl
 
         def extract_file_data(lns, dlm):
             chapters = re.split(dlm + "{3,}", lns)
@@ -25,18 +20,24 @@ class XMLConverter:
                 chapter = chapter.strip()
                 div = etree.SubElement(doc, 'block')
 
-                paragraphs = re.split(delim + "{2}|" + delim + "\t", chapter)
+                paragraphs = re.split(delim + "{1,2}", chapter)
                 for i in range(len(paragraphs)):
                     pgph = etree.SubElement(div, 'block')
                     pgph.text = paragraphs[i]
 
         if fn is None:
-            print('***Txt/Html/Docx/Pdf to Xml converter ***')
             print('Type in filename')
-            print('Example: sample.txt')
             fn = input()
+            fl = fn
+            sample_name = ''
+            lab = 'lab1'
+        else:
+            fl = Path(dirn) / fn
+            sample_name = ''.join(filter(bool, re.split(r'/|\w(?!\w*/$)', dirn))) + '/'
+            lab = re.match(r'\w+(?=/)', dirn).group(0)
 
-        xml_fn = '%s.xml' % ''.join(re.split(r'\.\w+$', fn))
+        route = re.split(r'/', fn)
+        xml_fn = '.xml'.join(re.split(r'\.\w+$', route[len(route) - 1]))
 
         doc = etree.Element('doc')
         doc.attrib['name'] = xml_fn
@@ -95,9 +96,12 @@ class XMLConverter:
             print('Incorrect filename extension!')
 
         tree = etree.ElementTree(doc)
-        tree.write("xml_samples/%s/%s" % (sample_name, xml_fn),
+        tree.write("%s/xml_samples/%s%s" % (lab, sample_name, xml_fn),
                    pretty_print=True,
                    xml_declaration=True,
                    encoding='UTF-8')
-        return 'xml_samples/%s/%s' % (sample_name, xml_fn)
+        return '%s/xml_samples/%s%s' % (lab, sample_name, xml_fn)
 
+
+if __name__ == '__main__':
+    XMLConverter().convert()

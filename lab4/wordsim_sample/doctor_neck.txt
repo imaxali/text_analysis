@@ -1,0 +1,38 @@
+Doctors and Nurses Should Think More About Their Necks
+Hospital workers spend a lot of time donning personal protective equipment, but their ears and necks are often left exposed.
+
+Not long ago I asked a colleague to take my photo just before I was to see a patient who potentially had the novel coronavirus. Even though I had assured my 82-year-old mother every night that my hospital department has adequate supplies, she was worried and needed proof.
+
+“Make sure you get me from head-to-toe,” I directed my colleague, my glasses fogging up behind the face shield and my breath hot behind the N-95 mask. Following the hospital’s guidelines, I even added a surgical bouffant cap and shoe coverings for good measure.
+
+“You look good,” my mother said that night on FaceTime. But then I noticed her squinting at the photo on her phone, the corners of her mouth turning down.
+
+“Why,” she asked after a moment, “is your neck so bare?”
+
+I looked at the photo. Amid the layers of yellow and blue impermeable cloth and sea green latex, there was a large swath of exposed skin extending from just below my chin to my collar bones. And if I hadn’t put on a bouffant cap, my hair and ears would have been, as well.
+
+I was reminded of my mother’s observation when I read a recent study in JAMA that examined how much personal protective equipment, or P.P.E., was in fact protecting health care workers.
+
+For as long as infections have raged, protective clothing has been a critical component of safe health care. Ranging from the most basic gloves for touching body fluids to sealed total body cover-ups for highly contagious and deadly infections like ebola, P.P.E. is the health care profession’s sartorial equivalent of combat gear. With significant rates of infection, severe illness and mortality from Covid-19, it is not surprising that adequate P.P.E. has become the cri de coeur of front-line health care workers.
+
+But just like combat gear, there is a delicate balance. Wear too little and the risk of harm increases; wear too much and the equipment becomes so cumbersome that it becomes impossible to move, work or even breathe. To navigate that balance, health care workers and hospital systems have turned to public health organizations like the Centers for Disease Control and Prevention and the World Health Organization for guidelines that are both practical and protective.
+
+Now it appears that the current guidelines for front-line health care workers working with Covid-19 patients — N95 masks, face shields, gloves and gowns — might not have achieved an adequate balance between those two competing needs.
+
+Using high-fidelity simulation mannequins, the researchers asked two groups of experienced emergency department doctors and nurses to treat a presumed Covid-19 patient who needed a breathing tube. Before starting, the researchers applied an invisible fluorescent compound to the nose, mouth, palms and upper chest of the mannequins and added the same compound to a device that would expel simulated aerosolized droplets from the mannequin’s nose and throat. The researchers then asked health care workers to put on P.P.E. according to W.H.O. and C.D.C. guidelines and to follow protocols of care for Covid-19 patients where the most skilled physician present would insert the breathing tube in order to minimize risk to others.
+
+When the simulations were completed, the researchers turned out the room lights, turned on an ultraviolet light, and took photos of the participants in their P.P.E. The researchers expected the P.P.E. to be contaminated with the fluorescent marker, and, under the usual protocols, health care workers would have taken off the contaminated protective gear after seeing high-risk patients so as not to contaminate themselves or others.
+
+But the researchers found that regardless of their specific roles in care, seven of the eight doctors and nurses also had fluorescent marks on exposed skin — six participants had marks on their necks, and one had marks on the ear. All of the participants had fluorescent stains in their hair, and half had stains on their shoes.
+
+“In times of pandemics like this one, any time you manage an airway or have a patient who is coughing, the situation is very high risk,” said Dr. Itai Shavit, senior author of the study and the director of the pediatric emergency department at the Rambam Health Care Campus in Haifa, Israel. “Taking care of these patients with an exposed head and neck is probably not safe enough.”
+
+Most of the microscopic droplets were not noticeable to the participants except under ultraviolet light. While it is unclear if this type of splattering under actual circumstances would lead to infection, the novel coronavirus is known to remain viable for hours on surfaces like plastic and cardboard, and the rhinovirus, a virus that causes the common cold, can remain infectious on skin for up to two hours. If a health care worker touched a contaminated patch of skin or hair, then touched their mouth or eyes or others, they could potentially infect themselves or others.
+
+“Doctors and nurses could potentially become a new source of infection,” Dr. Shavit postulated. “They would be at risk, but so would their colleagues and the patients they see when they leave the room.”
+
+While Dr. Shavit is quick to point out that his study is small and uses only simulation, “it’s probably not right to think that patients are the only source of infection. We have to think about ourselves and our colleagues.”
+
+Concerns about health care workers getting contaminated in spite of P.P.E. also surfaced in 2014 during the Ebola outbreak when two nurses in Texas contracted the disease from a patient while wearing P.P.E. A study the following year found that self-contamination could occur during removal of P.P.E. and that formal training and practice in putting on and taking off the equipment were critical to minimizing spread.
+
+Dr. Shavit and his team are continuing their work, collaborating with the Israeli elite special forces unit, Sayeret Matkal, to create head and neck coverings that might be both comfortable and safe. “It’s important for us to keep asking questions and looking for solutions,” Dr. Shavit said.

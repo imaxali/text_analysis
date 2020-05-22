@@ -1,0 +1,25 @@
+Types Of Aircraft
+There are a number of ways to identify aircraft by type. The primary distinction is between those that are lighter than air and those that are heavier than air.
+
+
+Lighter-than-air
+Aircraft such as balloons, nonrigid airships (blimps), and dirigibles are designed to contain within their structure a sufficient volume that, when filled with a gas lighter than air (heated air, hydrogen, or helium), displaces the surrounding ambient air and floats, just as a cork does on the water. Balloons are not steerable and drift with the wind. Nonrigid airships, which have enjoyed a rebirth of use and interest, do not have a rigid structure but have a defined aerodynamic shape, which contains cells filled with the lifting agent. They have a source of propulsion and can be controlled in all three axes of flight. Dirigibles are no longer in use, but they were lighter-than-air craft with a rigid internal structure, which was usually very large, and they were capable of relatively high speeds. It proved impossible to construct dirigibles of sufficient strength to withstand routine operation under all weather conditions, and most suffered disaster, either breaking up in a storm, as with the U.S. craft Shenandoah, Akron, and Macon, or through ignition of the hydrogen, as with the German Hindenburg in 1937.
+
+
+Heavier-than-air
+This type of aircraft must have a power source to provide the thrust necessary to obtain lift. Simple heavier-than-air craft include kites. These are usually a flat-surfaced structure, often with a stabilizing “tail,” attached by a bridle to a string that is held in place on the ground. Lift is provided by the reaction of the string-restrained surface to the wind.
+
+Another type of unmanned aircraft is the unmanned aerial vehicle (UAV). Sometimes called drones or remotely piloted vehicles (RPVs), these aircraft are radio-controlled from the air or the ground and are used for scientific and military purposes.
+Unpowered manned heavier-than-air vehicles must be launched to obtain lift. These include hang gliders, gliders, and sailplanes.
+
+Hang gliders are aircraft of various configurations in which the pilot is suspended beneath the (usually fabric) wing to provide stability and control. They are normally launched from a high point. In the hands of an experienced pilot, hang gliders are capable of soaring (using rising air columns to obtain upward gliding movement).
+
+Gliders are usually used for flight training and have the capability to fly reasonable distances when they are catapulted or towed into the air, but they lack the dynamic sophistication of sailplanes. These sophisticated unpowered craft have wings of unusually high aspect ratio (that is, a long wing span in proportion to wing width). Most sailplanes are towed to launch altitude, although some employ small, retractable auxiliary engines. They are able to use thermals (currents more buoyant than the surrounding air, usually caused by higher temperature) and orographic lift to climb to higher altitude and to glide for great distances. Orographic lift results from the mechanical effect of wind blowing against a terrain feature such as a cliff. The force of the wind is deflected upward by the face of the terrain, resulting in a rising current of air.
+
+Ultralights, which were originally merely hang gliders adapted for power by the installation of small engines similar to those used in chain saws, have matured into specially designed aircraft of very low weight and power but with flying qualities similar to conventional light aircraft. They are intended primarily for pleasure flying, although advanced models are now used for training, police patrol, and other work, including a proposed use in combat.
+
+
+Civil aircraft
+All nonmilitary planes are civil aircraft. These include private and business planes and commercial airliners.
+
+Private aircraft are personal planes used for pleasure flying, often single-engine monoplanes with nonretractable landing gear. They can be very sophisticated, however, and may include such variants as: “warbirds,” ex-military planes flown for reasons of nostalgia, ranging from primary trainers to large bombers; “homebuilts,” aircraft built from scratch or from kits by the owner and ranging from simple adaptations of Piper Cubs to high-speed, streamlined four-passenger transports; antiques and classics, restored older aircraft flown, like the warbirds, for reasons of affection and nostalgia; and aerobatic planes, designed to be highly maneuverable and to perform in air shows.
