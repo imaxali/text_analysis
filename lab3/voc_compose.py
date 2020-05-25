@@ -13,13 +13,14 @@ from re_tokenize import Tokenization
 from converting_to_xml import XMLConverter as converter
 
 
-class TfidfDicts:
+class Vectorisation:
     sample_name = None
     common_voc = {}
     df = {}
     files = []
     doc_term_matrix = []
     tf_idf_matrix = []
+    dicts_terms = []
 
     def filter_stops(self):
         csv_main = csv.writer(
@@ -76,7 +77,6 @@ class TfidfDicts:
         lemmatizer = pymorphy2.MorphAnalyzer()
         stemmer = nltk.stem.SnowballStemmer('russian') if __name__ == 'main' else nltk.stem.porter.PorterStemmer()
 
-        doc_term_frq = []
 
         for fl in self.files:
             markup = converter().convert(fl, self.sample_name)
@@ -92,7 +92,7 @@ class TfidfDicts:
                     frq = stems.count(stem)
                     voc[stem] = frq
 
-            doc_term_frq.append(voc)
+            self.dicts_terms.append(voc)
 
             if not bool(self.common_voc):
                 self.common_voc = {**voc}
@@ -112,12 +112,10 @@ class TfidfDicts:
         self.doc_term_matrix = []
         for k in self.common_voc:
             self.doc_term_matrix.append([0] * len(self.files))
-            for i, v in zip(range(len(doc_term_frq)), doc_term_frq):
+            for i, v in zip(range(len(self.dicts_terms)), self.dicts_terms):
                 if v.get(k):
                     self.doc_term_matrix[len(self.doc_term_matrix) - 1][i] = v[k]
         self.doc_term_matrix = sparse.lil_matrix(self.doc_term_matrix)
-
-        return self.doc_term_matrix
 
     def contrast_selection(self, samples):
         dicts = []
@@ -146,7 +144,7 @@ class TfidfDicts:
 
 
 if __name__ == '__main__':
-    dicts = TfidfDicts()
+    dicts = Vectorisation()
     print(dicts.df_counter())
-    print(dicts.tf_idf_counter())
-    print(dicts.tf_idf_matrix)
+    # print(dicts.tf_idf_counter())
+    # print(dicts.tf_idf_matrix)
