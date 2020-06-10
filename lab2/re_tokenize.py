@@ -8,7 +8,13 @@ class Tokenization:
         global text_content
 
         def is_numeric(s):
-            return s if s.isnumeric() is False else num2words(s, lang='en')
+            try:
+                if s.isnumeric() is False:
+                    return s
+                else:
+                    num2words(s, lang='en')
+            except:
+                print(s)
 
         def is_single(c):
             return '' if c is None or len(c) == 1 else c
@@ -23,11 +29,28 @@ class Tokenization:
                 return 'Format to xml first'
             text_content = etree.tostring(xml_tree.getroot(), encoding='utf8', method='text').decode('utf-8')
 
-            sentences = re.findall(r'[^\s][^.!?]+?(?:\.+|[!?])[\'"]{,2}(?=\s*(?:[A-ZА-ЯЁ]|$))', text_content)
+            # sentences = re.findall(r'[^\s][^.!?]+?(?:\.+|[!?])[\'"]{,2}(?=\s*(?:[A-ZА-ЯЁ]|$))', text_content)
+            #
+            # words_by_sentence = []
+            # for s in sentences:
+            #     words_by_sentence.append(list(filter(lambda el: el != '', re.split(r'\s+|(?:\.+|[!?,])', s))))
 
-            words_by_sentence = []
-            for s in sentences:
-                words_by_sentence.append(list(filter(lambda el: el != '', re.split(r'\s+|(?:\.+|[!?,])', s))))
+        sentences = re.split(r'[.!?]+', text_content)
+        preproc_sent = []
+        for sentence in sentences:
+            preproc_sent.append(list(
+                filter(
+                    bool,
+                    map(
+                        is_single,
+                        map(
+                            is_numeric,
+                            re.split(r'[^\w]', sentence)
+                            )
+                        )
+                    )
+                )
+            )
 
         text_content = re.split(r'[^\w]', text_content)
 
@@ -45,9 +68,4 @@ class Tokenization:
                 )
             )
 
-        return single_words
-
-
-if __name__ == '__main__':
-    print(Tokenization().tokenize('Я так думаю, значит так оно и есть. 10 игроков.', False))
-
+        return single_words, preproc_sent
