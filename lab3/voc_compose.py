@@ -14,13 +14,11 @@ from converting_to_xml import XMLConverter as converter
 
 
 class Vectorisation:
-    sample_name = None
-    common_voc = {}
-    df = {}
-    files = []
-    doc_term_matrix = []
-    tf_idf_matrix = []
-    dicts_terms = []
+    def __init__(self):
+        self.sample_name = None
+        self.common_voc, self.df = {}, {}
+        self.files, self.doc_term_matrix, self.tf_idf_matrix, self.doc_term, self.sentences = \
+            [], [], [], [], []
 
     def filter_stops(self):
         csv_main = csv.writer(
@@ -77,14 +75,17 @@ class Vectorisation:
         lemmatizer = pymorphy2.MorphAnalyzer()
         stemmer = nltk.stem.SnowballStemmer('russian') if __name__ == 'main' else nltk.stem.porter.PorterStemmer()
 
-
         for fl in self.files:
             markup = converter().convert(fl, self.sample_name)
 
-            tokens = Tokenization().tokenize(markup)
+            tokens, sentences = Tokenization().tokenize(markup)
             lemmas = [lemmatizer.parse(tk)[0].normal_form for tk in tokens]
             stems = [stemmer.stem(l) for l in lemmas]
 
+            sent_lemmas = [[lemmatizer.parse(tk)[0].normal_form for tk in sentence] for sentence in sentences]
+            sent_stems = [[stemmer.stem(l) for l in sentence] for sentence in sent_lemmas]
+
+            self.sentences.append(sent_stems)
             voc = dict()
 
             for idx, stem in enumerate(stems):
@@ -92,7 +93,7 @@ class Vectorisation:
                     frq = stems.count(stem)
                     voc[stem] = frq
 
-            self.dicts_terms.append(voc)
+            self.doc_term.append(voc)
 
             if not bool(self.common_voc):
                 self.common_voc = {**voc}
@@ -112,10 +113,10 @@ class Vectorisation:
         self.doc_term_matrix = []
         for k in self.common_voc:
             self.doc_term_matrix.append([0] * len(self.files))
-            for i, v in zip(range(len(self.dicts_terms)), self.dicts_terms):
+            for i, v in zip(range(len(self.doc_term)), self.doc_term):
                 if v.get(k):
                     self.doc_term_matrix[len(self.doc_term_matrix) - 1][i] = v[k]
-        self.doc_term_matrix = sparse.lil_matrix(self.doc_term_matrix)
+        self.doc_term_matrix = sparse.lil_matrix(self.doc_term_matrix, dtype=float)
 
     def contrast_selection(self, samples):
         dicts = []
