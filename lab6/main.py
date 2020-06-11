@@ -3,7 +3,6 @@ import numpy as np
 from gensim.models import Word2Vec
 import pandas as pd
 
-
 sys.path.append('lab4')
 from vect_models import Estimation
 
@@ -44,7 +43,6 @@ class PlsaVSWord2vec:
             for d_i in cols:
                 prob = doc_topic_prob.loc[d_i, :] * topic_word_prob.loc[:, w_i]
                 topic_prob[d_i][w_i] = self.normalize_series(prob)
-                print(topic_prob[d_i][w_i])
 
         for topic in range(self.k):
             for _w_i in rows:
@@ -58,8 +56,8 @@ class PlsaVSWord2vec:
                 res = 0
                 for _w_i in range(word_count):
                     res += self.m.toarray()[_w_i][_d_i] * topic_prob[_d_i, _w_i, topic]
-                topic_word_prob.loc[_d_i][topic] = res
-            topic_word_prob.loc[_d_i] = self.normalize_series(topic_word_prob.loc[_d_i])
+                doc_topic_prob.loc[_d_i][topic] = res
+            doc_topic_prob.loc[_d_i] = self.normalize_series(topic_word_prob.loc[_d_i])
         return topic_word_prob
 
     def compute_word2vec_m(self, d_t):
@@ -67,10 +65,6 @@ class PlsaVSWord2vec:
         # df = itertools.chain.from_iterable(d_t)
         model = Word2Vec(df, min_count=1, window=20, sg=1)
         self.w2v = self.normalize_df(pd.DataFrame(model.wv[model.wv.vocab.keys()]).T)
-
-    def compute_sim(self, m):
-        print('Cosine sim: {}'.format(self.vec_mods.cosine_sim(m, 'drink', 'car')))
-        print('Jaccard sim: {}'.format(self.vec_mods.jaccard_sim(m, 'drink', 'car')))
 
     def compute_sim(self, m):
         print('Cosine sim: {}'.format(self.vec_mods.cosine_sim(m, 'car', 'drink')))
