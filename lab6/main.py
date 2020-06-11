@@ -3,7 +3,11 @@ from scipy.sparse.linalg import svds
 import numpy as np
 from gensim.models import Word2Vec
 import pandas as pd
+<<<<<<< HEAD
 from scipy.sparse import lil_matrix
+=======
+import itertools
+>>>>>>> 6022f7f29a426225b519888cdbdb2e0874832bd1
 from scipy.spatial.distance import cosine
 
 
@@ -63,6 +67,10 @@ class PlsaVSWord2vec:
                     res += self.m.toarray()[_w_i][_d_i] * topic_prob[_d_i, _w_i, topic]
                 topic_word_prob.loc[_d_i][topic] = res
             topic_word_prob.loc[_d_i] = self.normalize_series(topic_word_prob.loc[_d_i])
+<<<<<<< HEAD
+=======
+        self.plsa = np.dot(np.dot(topic_prob, topic_word_prob), doc_topic_prob)
+>>>>>>> 6022f7f29a426225b519888cdbdb2e0874832bd1
         return topic_word_prob
 
     def compute_word2vec_m(self, d_t):
@@ -70,10 +78,17 @@ class PlsaVSWord2vec:
         # df = itertools.chain.from_iterable(d_t)
         model = Word2Vec(df, min_count=1, window=20, sg=1)
         self.w2v = self.normalize_df(pd.DataFrame(model.wv[model.wv.vocab.keys()]).T)
+<<<<<<< HEAD
 
     def compute_sim(self, m):
         print('Cosine sim: {}'.format(self.vec_mods.cosine_sim(m, 'drink', 'car')))
         print('Jaccard sim: {}'.format(self.vec_mods.jaccard_sim(m, 'drink', 'car')))
+        print(self.w2v[0], len(self.w2v), len(self.w2v[0]))
+
+    def compute_sim(self, m):
+        print('Cosine sim: {}'.format(self.vec_mods.cosine_sim(m, 'car', 'drink')))
+        print('Jaccard sim: {}'.format(self.vec_mods.jaccard_sim(m, 'car', 'drink')))
+>>>>>>> 6022f7f29a426225b519888cdbdb2e0874832bd1
 
 
 if __name__ == '__main__':
