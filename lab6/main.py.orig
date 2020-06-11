@@ -1,13 +1,8 @@
 import sys
-from scipy.sparse.linalg import svds
 import numpy as np
 from gensim.models import Word2Vec
 import pandas as pd
 <<<<<<< HEAD
-from scipy.sparse import lil_matrix
-=======
-import itertools
->>>>>>> 6022f7f29a426225b519888cdbdb2e0874832bd1
 from scipy.spatial.distance import cosine
 
 
@@ -69,8 +64,6 @@ class PlsaVSWord2vec:
             topic_word_prob.loc[_d_i] = self.normalize_series(topic_word_prob.loc[_d_i])
 <<<<<<< HEAD
 =======
-        self.plsa = np.dot(np.dot(topic_prob, topic_word_prob), doc_topic_prob)
->>>>>>> 6022f7f29a426225b519888cdbdb2e0874832bd1
         return topic_word_prob
 
     def compute_word2vec_m(self, d_t):
